@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Django study - {{ title }}</title>{% endblock %}
+
+{% block content %} 
+    <!-- MAIN -->
+    <main role="main">
+      <!-- Content -->
+      <article>
+        <div class="section background-white"> 
+          <div class="line">
+            <h1>Author List</h1>
+            {% if authors %}
+            <ul>
+              {% for author in authors %}
+                <li>
+                  <a href="{{ author.get_absolute_url }}">{{ author }}</a> 
+                </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+              <p>There are no author in the library.</p>
+            {% endif %}
+          </div>
+        </div> 
+      </article>
+    </main>
+{% endblock %}
