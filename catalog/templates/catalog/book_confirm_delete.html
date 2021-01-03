@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="line margin-top-30 margin-bottom-10" >
+<h1>Delete Book</h1>
+
+<p>Are you sure you want to delete the book: {{ book.title }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <button class="submit-form button background-primary border-radius text-white" type="submit">Yes, Delete</button>
+  <button class="submit-form button background-primary border-radius text-white" type="button" onclick="window.history.back();" >Cancel</button>
+</form>
+</div>
+{% endblock %}

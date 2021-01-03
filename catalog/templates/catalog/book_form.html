@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="line margin 30" >
+<form class="customform" action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <button class="button background-primary border-radius text-white" type="submit">Submit</button>
+    <button class="button border-radius text-white" type="button" onclick="window.history.back();" >Cancel</button>
+
+</form>
+</div>
+{% endblock %}

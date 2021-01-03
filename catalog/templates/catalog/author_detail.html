@@ -12,6 +12,9 @@
             <p>{{ author.date_of_birth }} ~ {{ author.date_of_death }}</p>
         </header>
         <div class="section background-white"> 
+          <div class="line margin-bottom-30">
+            <a href="{% url 'author_update' author.id %}"" > Update</a> | <a href="{% url 'author_delete' author.id %}">Delete</a>
+          </div>
           <div class="line">
             <div style="margin-left:20px;margin-top:20px">
               <h2>Books</h2>

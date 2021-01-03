@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Django study - Book: {{ book.title }}</title>{% endblock %}
+
+{% block content %} 
+    <!-- MAIN -->
+    <main role="main">
+      <!-- Content -->
+      <article>
+        <header class="section background-primary text-center">
+            <h1 class="text-white margin-bottom-0 text-size-50 text-thin text-line-height-1">Renewal Form - {{ book_instance.book.title }}</h1>
+        </header>
+        <div class="section background-white"> 
+          <div class="line">
+            <p>Borrower: {{ book_instance.borrower }}</p>
+            <p{% if book_instance.is_overdue %} class="text-danger"{% endif %}>Due date: {{book_instance.due_back}}</p>
+        
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_table }}
+                {{ form.renewal_date.label_tag }}
+                <input type="submit" value="Submit">
+            </form>
+
+          </div>
+        </div> 
+      </article>
+    </main>
+{% endblock %}
+
+
+
+
