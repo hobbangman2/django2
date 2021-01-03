@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Django study - {{ title }}</title>{% endblock %}
+
+{% block content %} 
+    <!-- MAIN -->
+    <main role="main">
+      <!-- Content -->
+      <article>
+        <header class="section background-primary text-center">
+            <h1 class="text-white margin-bottom-0 text-size-50 text-thin text-line-height-1">Borrowed books for Librarians</h1>
+        </header>
+        <div class="section background-white"> 
+          <div class="line">
+            <h1>Book List</h1>
+            {% if bookinstance_list %}
+            <ul>
+              {% for bookinst in bookinstance_list %}
+              <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">
+                <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }}, {{ bookinst.borrower}})
+              </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+              <p>There are no books in the library.</p>
+            {% endif %}
+          </div>
+        </div> 
+      </article>
+    </main>
+{% endblock %}

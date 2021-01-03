@@ -29,7 +29,16 @@
         <div class="line">
           <div class="s-12 m-6 l-6">
             <div class="top-bar-contact">
-              <p class="text-size-12">Contact Us: 0800 200 200 | <a class="text-orange-hover" href="mailto:contact@sampledomain.com">contact@sampledomain.com</a></p>
+                <p class="text-size-12">
+                {% if user.is_authenticated %} 
+                User: {{ user.get_username }}
+                | <a class="text-orange-hover" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+                {% else %}
+                <a class="text-orange-hover" href="{% url 'login'%}?next={{request.path}}">Login</a>
+                {% endif %}
+                </p>
+          <!--    <p class="text-size-12">Contact Us: 0800 200 200 | <a class="text-orange-hover" href="mailto:contact@sampledomain.com">contact@sampledomain.com</a></p>
+          -->
             </div>
           </div>
           <div class="s-12 m-6 l-6">
@@ -60,8 +69,8 @@
                 <ul>
                   <li><a href="{% url 'books' %}">Books</a>
                     <ul>
-                      <li><a href="">국내도서</a></li>
-                      <li><a>역사</a></li>
+                      <li><a href="{% url 'my-borrowed' %}">My books</a></li>
+                      <li><a href="{% url 'manage-borrowed' %}">>Manage Books</a></li>
                     </ul>
                   </li>
                   <li><a href="{% url 'authors' %}">Authors</a></li>

@@ -7,6 +7,9 @@
     <main role="main">
       <!-- Content -->
       <article>
+        <header class="section background-primary text-center">
+            <h1 class="text-white margin-bottom-0 text-size-50 text-thin text-line-height-1">Authors - 작가 리스트</h1>
+        </header>          
         <div class="section background-white"> 
           <div class="line">
             <h1>Author List</h1>
@@ -14,7 +17,7 @@
             <ul>
               {% for author in authors %}
                 <li>
-                  <a href="{{ author.get_absolute_url }}">{{ author }}</a> 
+                  <a href="{{ author.get_absolute_url }}">{{ author }} ({{ author.book_set.all.count }})</a> 
                 </li>
               {% endfor %}
             </ul>
